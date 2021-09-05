@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-void *print(void *arguments) {
+void *print(void *arg) {
     for (int i = 0; i < 5; ++ i) {
         printf("CHILD\n");
     }
 
-    pthread_exit(arguments);
+    pthread_exit(arg);
 }
 
 int main(int argc, char *argv[]) {
