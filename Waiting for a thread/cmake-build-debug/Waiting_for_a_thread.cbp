@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Waiting_for_a_thread"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/andrey/GIT/operating-system-labs-2/Waiting for a thread/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/andrey/GIT/operating-system-labs-2/Waiting for a thread/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/andrey/GIT/operating-system-labs-2/Waiting for a thread/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Waiting_for_a_thread">
+				<Option output="/home/andrey/GIT/operating-system-labs-2/Waiting for a thread/cmake-build-debug/Waiting_for_a_thread" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/andrey/GIT/operating-system-labs-2/Waiting for a thread/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/10/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 Waiting_for_a_thread"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Waiting_for_a_thread/fast">
+				<Option output="/home/andrey/GIT/operating-system-labs-2/Waiting for a thread/cmake-build-debug/Waiting_for_a_thread" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/andrey/GIT/operating-system-labs-2/Waiting for a thread/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/10/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 Waiting_for_a_thread/fast"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/andrey/GIT/operating-system-labs-2/Waiting\ for\ a\ thread/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/andrey/GIT/operating-system-labs-2/Waiting for a thread/main.c">
+			<Option target="Waiting_for_a_thread"/>
+		</Unit>
+		<Unit filename="/home/andrey/GIT/operating-system-labs-2/Waiting for a thread/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

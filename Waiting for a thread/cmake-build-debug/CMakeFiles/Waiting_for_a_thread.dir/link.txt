@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/Waiting_for_a_thread.dir/main.c.o -o Waiting_for_a_thread 
