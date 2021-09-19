@@ -1,3 +1,5 @@
+## Thread termination handling
+Модифицируйте программу ***Force termination of a thread*** так, чтобы дочерняя нить перед завершением распечатывала сообщение об этом. Используйте **pthread_cleanup_push**.
 ## Force termination of a thread
 Дочерняя нить должна распечатывать текст на экран. Через две секунды после создания дочерней нити, родительская нить должна прервать ее вызовом функции **pthread_cancel**.
 ## Thread creation
