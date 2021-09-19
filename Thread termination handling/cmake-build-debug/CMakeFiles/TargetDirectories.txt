@@ -1,0 +1,3 @@
+/home/andrey/GIT/operating-system-labs-2/Thread termination handling/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/andrey/GIT/operating-system-labs-2/Thread termination handling/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/andrey/GIT/operating-system-labs-2/Thread termination handling/cmake-build-debug/CMakeFiles/Thread_termination_handling.dir

@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/Thread_termination_handling.dir/main.c.o -o Thread_termination_handling 
