@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/Thread_parameters.dir/main.c.o -o Thread_parameters 
