@@ -4,8 +4,6 @@
 
 #define THREAD_POOL_SIZE 4
 
-volatile int THREAD_INDEX = 0;
-
 typedef struct thread_parameter {
     int size;
     char **strings;
@@ -13,11 +11,11 @@ typedef struct thread_parameter {
 
 void *print(void *arg) {
     thread_parameter *threads_parameter = (thread_parameter*) arg;
-    for (int i = 0; i < (threads_parameter + THREAD_INDEX)->size; ++ i) {
-        printf("%s\n", *((threads_parameter + THREAD_INDEX)->strings + i));
+    int index_for_thread = pthread_self() - 2;
+    for (int i = 0; i < (threads_parameter + index_for_thread)->size; ++ i) {
+        printf("%s\n", *((threads_parameter + index_for_thread)->strings + i));
     }
 
-    THREAD_INDEX++;
     pthread_exit(arg);
 }
 
@@ -37,7 +35,6 @@ int main(int argc, char *argv[]) {
             perror("pthread_create");
             exit(EXIT_FAILURE);
         }
-        pthread_join(threads[i], NULL);
     }
 
     pthread_exit(NULL);
