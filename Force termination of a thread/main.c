@@ -8,7 +8,6 @@
 
 void *print(void *arg) {
     char *text = (char*) arg;
-
     for (int i = 0; i < NUMBER_OF_LINES; ++ i) {
         printf("%d %s\n", i, text);
         sleep(TWO_SECONDS / 2);
@@ -19,8 +18,7 @@ void *print(void *arg) {
 
 int main(int argc, char *argv[]) {
     pthread_t thread;
-
-    char text[] = {"line"};
+    char *text = {"line"};
 
     if (pthread_create(&thread, NULL, print, (void*) text) != 0) {
         perror("pthread_create");

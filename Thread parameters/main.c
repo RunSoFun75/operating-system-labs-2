@@ -21,7 +21,6 @@ void *print(void *arg) {
 
 int main(int argc, char *argv[]) {
     pthread_t threads[THREAD_POOL_SIZE];
-
     char *strings[] = {"1", "2", "3", "4", "5", "6", "7", "8"};
 
     thread_parameter threads_parameter[THREAD_POOL_SIZE];
