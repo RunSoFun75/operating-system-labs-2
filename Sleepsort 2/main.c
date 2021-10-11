@@ -7,6 +7,8 @@
 #define MAX_QUANTITY_LINES 100
 #define SLEEP_COEFFICIENT 10000
 
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+
 typedef struct struct_string {
     char string[1000];
     int size;
@@ -64,8 +66,6 @@ void free_list() {
 void *sleep_sort(void *arg) {
     struct_string *strings = (struct_string *) arg;
     usleep(SLEEP_COEFFICIENT * strings->size);
-
-    pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
     pthread_mutex_lock(&lock);
     push_back(strings->string);
