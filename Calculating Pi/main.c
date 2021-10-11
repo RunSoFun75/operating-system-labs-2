@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+
+#define NUM_STEPS 200000000
+
+int number_of_threads;
+
+void *calculate(void *arg) {
+    int start_iteration = (int) arg;
+    double *sum;
+    if ((sum = (double *) malloc(sizeof(double))) == NULL) {
+        perror("malloc");
+        exit(EXIT_FAILURE);
+    }
+    *sum = 0;
+    for (int i = start_iteration; i < NUM_STEPS; i += number_of_threads) {
+        *sum += (i % 2 == 0 ? 1.0 : -1.0) / (2.0 * i + 1.0);
+    }
+
+    pthread_exit(sum);
+}
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "not enough arguments\n");
+        exit(EXIT_FAILURE);
+    }
+    number_of_threads = atoi(argv[1]);
+    if (number_of_threads < 1) {
+        fprintf(stderr, "wrong number of threads\n");
+    }
+    pthread_t *threads;
+    if ((threads = (pthread_t *) malloc(sizeof(pthread_t) * number_of_threads)) == NULL) {
+        perror("malloc");
+        exit(EXIT_FAILURE);
+    }
+
+    for (int i = 0; i < number_of_threads; ++ i) {
+        if (pthread_create(&threads[i], NULL, calculate, (void *) i) != 0) {
+            perror("pthread_create");
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    double sum = 0;
+    for (int i = 0; i < number_of_threads; ++ i) {
+        double *ret_val;
+        if (pthread_join(threads[i], (void **) &ret_val) != 0) {
+            perror("pthread_join");
+            exit(EXIT_FAILURE);
+        }
+        sum += *ret_val;
+        free(ret_val);
+    }
+    double pi = 4 * sum;
+    printf("pi done - %.15g \n", pi);
+
+    free(threads);
+
+    pthread_exit(NULL);
+}

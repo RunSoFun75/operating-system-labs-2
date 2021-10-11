@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/Calculating_Pi.dir/main.c.o -o Calculating_Pi 
