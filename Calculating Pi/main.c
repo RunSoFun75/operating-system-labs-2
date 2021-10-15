@@ -6,19 +6,18 @@
 
 int number_of_threads;
 
+typedef struct iteration_context {
+    int start_iteration;
+    double *ret_val;
+} iteration_context;
+
 void *calculate(void *arg) {
-    int start_iteration = (int) arg;
-    double *sum;
-    if ((sum = (double *) malloc(sizeof(double))) == NULL) {
-        perror("malloc");
-        exit(EXIT_FAILURE);
-    }
-    *sum = 0;
-    for (int i = start_iteration; i < NUM_STEPS; i += number_of_threads) {
-        *sum += (i % 2 == 0 ? 1.0 : -1.0) / (2.0 * i + 1.0);
+    iteration_context *context = (iteration_context*) arg;
+    for (int i = context->start_iteration; i < NUM_STEPS; i += number_of_threads) {
+        *context->ret_val += (i % 2 == 0 ? 1.0 : -1.0) / (2.0 * i + 1.0);
     }
 
-    pthread_exit(sum);
+    pthread_exit(context);
 }
 
 int main(int argc, char *argv[]) {
@@ -26,8 +25,7 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "not enough arguments\n");
         exit(EXIT_FAILURE);
     }
-    number_of_threads = atoi(argv[1]);
-    if (number_of_threads < 1) {
+    if ((number_of_threads = atoi(argv[1])) == 0 && number_of_threads < 1) {
         fprintf(stderr, "wrong number of threads\n");
     }
     pthread_t *threads;
@@ -37,7 +35,17 @@ int main(int argc, char *argv[]) {
     }
 
     for (int i = 0; i < number_of_threads; ++ i) {
-        if (pthread_create(&threads[i], NULL, calculate, (void *) i) != 0) {
+        iteration_context *context = NULL;
+        if ((context = (iteration_context *) malloc(sizeof(iteration_context))) == NULL) {
+            perror("malloc");
+            exit(EXIT_FAILURE);
+        }
+        if ((context->ret_val = (double *) malloc(sizeof(double ))) == NULL) {
+            perror("malloc");
+            exit(EXIT_FAILURE);
+        }
+        context->start_iteration = i;
+        if (pthread_create(&threads[i], NULL, calculate, (void *) context) != 0) {
             perror("pthread_create");
             exit(EXIT_FAILURE);
         }
@@ -45,13 +53,14 @@ int main(int argc, char *argv[]) {
 
     double sum = 0;
     for (int i = 0; i < number_of_threads; ++ i) {
-        double *ret_val;
-        if (pthread_join(threads[i], (void **) &ret_val) != 0) {
+        iteration_context *ret_context;
+        if (pthread_join(threads[i], (void **) &ret_context) != 0) {
             perror("pthread_join");
             exit(EXIT_FAILURE);
         }
-        sum += *ret_val;
-        free(ret_val);
+        sum += *ret_context->ret_val;
+        free(ret_context->ret_val);
+        free(ret_context);
     }
     double pi = 4 * sum;
     printf("pi done - %.15g \n", pi);
