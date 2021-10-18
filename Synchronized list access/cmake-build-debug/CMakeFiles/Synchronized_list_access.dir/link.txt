@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/Synchronized_list_access.dir/main.c.o -o Synchronized_list_access 
