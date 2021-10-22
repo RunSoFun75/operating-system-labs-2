@@ -24,7 +24,7 @@ void *create_detail_B(void *arg) {
     }
 }
 
-void *create_detail_C() {
+void *create_detail_C(void *arg) {
     while(1) {
         sleep(3);
         sem_post(&detail_C);
@@ -32,7 +32,7 @@ void *create_detail_C() {
     }
 }
 
-void *create_module() {
+void *create_module(void *arg) {
     while(1){
         sem_wait(&detail_A);
         sem_wait(&detail_B);
