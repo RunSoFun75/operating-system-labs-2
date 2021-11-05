@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <pthread.h>
 #include <signal.h>
+#include <pthread.h>
 
-#define NUM_STEPS 1000000
+#define NUM_STEPS_ITERATION 1000000
 
 pthread_mutex_t mutex_lock = PTHREAD_MUTEX_INITIALIZER;
 pthread_barrier_t barrier;
@@ -20,21 +20,22 @@ void *calculate(void *arg) {
     iteration_context *context = (iteration_context*) arg;
     int thread_current_iteration_count = 0;
     while (1) {
-        for (int i = thread_current_iteration_count * NUM_STEPS + context->start_iteration;
-             i < (thread_current_iteration_count + 1) * NUM_STEPS;
+        for (int i = thread_current_iteration_count * NUM_STEPS_ITERATION + context->start_iteration;
+             i < (thread_current_iteration_count + 1) * NUM_STEPS_ITERATION;
              i += number_of_threads) {
             *context->ret_val += (i % 2 == 0 ? 1.0 : -1.0) / (2.0 * i + 1.0);
         }
         pthread_barrier_wait(&barrier);
 
         pthread_mutex_lock(&mutex_lock);
-        if (stop_calculating == 1 && thread_current_iteration_count == thread_latest_iteration) {
+        if ((stop_calculating == 1) && (thread_current_iteration_count == thread_latest_iteration)) {
             pthread_mutex_unlock(&mutex_lock);
             break;
         } else {
             thread_current_iteration_count++;
-            if (thread_latest_iteration < thread_current_iteration_count)
+            if (thread_latest_iteration < thread_current_iteration_count) {
                 thread_latest_iteration = thread_current_iteration_count;
+            }
         }
         pthread_mutex_unlock(&mutex_lock);
     }
@@ -51,11 +52,12 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "not enough arguments\n");
         exit(EXIT_FAILURE);
     }
-    if ((number_of_threads = atoi(argv[1])) == 0 && number_of_threads < 1) {
+    if (((number_of_threads = atoi(argv[1])) == 0) && (number_of_threads < 1)) {
         fprintf(stderr, "wrong number of threads\n");
+        exit(EXIT_FAILURE);
     }
     pthread_t *threads;
-    if ((threads = (pthread_t *) malloc(sizeof(pthread_t) * number_of_threads)) == NULL) {
+    if ((threads = (pthread_t *) malloc(number_of_threads * sizeof(pthread_t))) == NULL) {
         perror("malloc");
         exit(EXIT_FAILURE);
     }
@@ -74,7 +76,7 @@ int main(int argc, char *argv[]) {
             perror("malloc");
             exit(EXIT_FAILURE);
         }
-        if ((context->ret_val = (double *) malloc(sizeof(double ))) == NULL) {
+        if ((context->ret_val = (double *) malloc(sizeof(double))) == NULL) {
             perror("malloc");
             exit(EXIT_FAILURE);
         }

@@ -27,6 +27,7 @@ int main(int argc, char *argv[]) {
     }
     if ((number_of_threads = atoi(argv[1])) == 0 && number_of_threads < 1) {
         fprintf(stderr, "wrong number of threads\n");
+        exit(EXIT_FAILURE);
     }
     pthread_t *threads;
     if ((threads = (pthread_t *) malloc(sizeof(pthread_t) * number_of_threads)) == NULL) {
