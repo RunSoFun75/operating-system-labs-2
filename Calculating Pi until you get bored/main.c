@@ -102,6 +102,7 @@ int main(int argc, char *argv[]) {
     printf("pi done - %.15g \n", pi);
 
     pthread_barrier_destroy(&barrier);
+    pthread_mutex_destroy(&mutex_lock);
     free(threads);
 
     pthread_exit(NULL);
