@@ -10,7 +10,6 @@ sem_t detail_A, detail_B, detail_C, module;
 
 void *create_detail_A(void *arg) {
     int *development_time_of_detail_A = (int *) arg;
-
     while (1) {
         sleep(*development_time_of_detail_A);
         sem_post(&detail_A);
@@ -20,7 +19,6 @@ void *create_detail_A(void *arg) {
 
 void *create_detail_B(void *arg) {
     int *development_time_of_detail_B = (int *) arg;
-
     while (1) {
         sleep(*development_time_of_detail_B);
         sem_post(&detail_B);
@@ -30,7 +28,6 @@ void *create_detail_B(void *arg) {
 
 void *create_detail_C(void *arg) {
     int *development_time_of_detail_C = (int *) arg;
-
     while (1) {
         sleep(*development_time_of_detail_C);
         sem_post(&detail_C);
@@ -49,7 +46,6 @@ void *create_module(void *arg) {
 
 void create_widget() {
     int number_of_widgets = 0;
-
     while (1) {
         sem_wait(&module);
         sem_wait(&detail_C);
@@ -66,14 +62,14 @@ int main(int argc, char *argv[]) {
 
     pthread_t threads[NUMBER_OF_FACTORIES];
 
-    int *development_time_of_detail_A;
-    int *development_time_of_detail_B;
-    int *development_time_of_detail_C;
-
     sem_init(&detail_A, 0, 0);
     sem_init(&detail_B, 0, 0);
     sem_init(&detail_C, 0, 0);
     sem_init(&module, 0, 0);
+
+    int *development_time_of_detail_A;
+    int *development_time_of_detail_B;
+    int *development_time_of_detail_C;
 
     if ((development_time_of_detail_A = (int *) malloc(sizeof(int))) == NULL) {
         perror("malloc");
