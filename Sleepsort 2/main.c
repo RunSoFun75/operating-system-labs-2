@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
 
     int n;
     scanf("%d", &n);
-    for(int i = 0; i < n; ++ i) {
+    for (int i = 0; i < n; ++ i) {
         scanf("%s", strings[i].string);
         strings[i].size = strlen(strings[i].string);
     }
@@ -101,6 +101,7 @@ int main(int argc, char *argv[]) {
 
     print_list();
     free_list();
+    pthread_mutex_destroy(&lock);
 
     pthread_exit(NULL);
 }
